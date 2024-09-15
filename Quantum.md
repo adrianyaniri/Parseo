@@ -117,13 +117,63 @@ if (result == 0) {
 }
 ```
 
-### Información adicional sobre computación y algoritmos cuánticos
+# Algoritmos Cuánticos Sencillos
 
-* ***Superposición***: Los qubits pueden existir en múltiples estados simultáneamente, permitiendo procesamiento paralelo masivo.
-* ***Entrelazamiento***: Los qubits pueden estar correlacionados de manera que el estado de uno depende instantáneamente del otro, sin importar la distancia.
-* ***Interferencia cuántica***: Los estados cuánticos pueden interferir entre sí, permitiendo la amplificación de resultados correctos y la cancelación de incorrectos.
+***Generador de Bits Aleatorios Cuántico***
+   
+_Explicación_:
+Este algoritmo aprovecha la naturaleza probabilística de la mecánica cuántica para generar bits aleatorios verdaderos. Se basa en el principio de superposición y el colapso de la función de onda durante la medición.
 
-#### Algoritmos cuánticos notables:
+### Cómo funciona:
 
-+ ***Algoritmo de Shor***: Factorización de números grandes en tiempo polinomial.
-+ ***Algoritmo de Grover***: Búsqueda en bases de datos no estructuradas con una aceleración cuadrática.
+* Inicializamos un qubit en el estado |0>.
+Aplicamos una puerta Hadamard (H) para poner el qubit en superposición.
+Medimos el qubit, obteniendo 0 o 1 con igual probabilidad.
+Repetimos el proceso para generar múltiples bits aleatorios.
+
+***Teleportación Cuántica Simplificada***
+   
+_Explicación:_
+La teleportación cuántica permite "transferir" el estado de un qubit a otro qubit distante utilizando entrelazamiento y comunicación clásica. Esta versión simplificada muestra los principios básicos sin la comunicación clásica.
+   
+### Cómo funciona:
+
+Preparamos un estado a teleportar en un qubit.
+Creamos un par de qubits entrelazados (estado Bell).
+Realizamos una operación de entrelazamiento entre el qubit a teleportar y uno del par entrelazado.
+Medimos los dos primeros qubits.
+El estado original se "teleporta" al tercer qubit (en un experimento real, se necesitaría comunicación clásica y operaciones adicionales).
+
+# Especificación Léxica del Lenguaje Quantum
+
+## Tabla de Tokens, Lexemas y Patrones
+
+| Token          | Lexema(s)              | Patrón (Regex)         |
+|----------------|------------------------|------------------------|
+| QUBIT          | "qubit"                | bqubit                 |
+| MEDIR          | "medir"                | medir                  |
+| SI             | "si"                   | si                     |
+| ENTONCES       | "entonces"             | entonces               |
+| MIESTRAS       | "mientras"             | mientras               | |
+| PRINT          | "print"                | bprint                 |
+| ESTADO_QUBIT   | "estado_qubit"         |                        |1>"                | \|[01]>                     |                |X|CNOT)\b              |
+| VARIABLE       | (nombres de variables) | [a-zA-Z_][a-zA-Z0-9_]* |
+| NUMERO         | (números enteros)      | [0-9]*                 |
+| IGUAL          | "="                    | =                      |
+| SUMA           | "+"                    | \+                     |
+| RESTA          | "-"                    | -                      |
+| MULTIPLICACION | "*"                    | \*                     |
+| DIVICION       | "/"                    | /                      |
+| LPAREN         | "("                    | \(                     |
+| RPAREN         | ")"                    | \)                     |
+| LBRACKET       | "["                    | \[                     |
+| RBRACKET       | "]"                    | \]                     |
+| COMA           | ","                    | ,                      |
+| DOSPUNTOS      | ":"                    | :                      | |
+
+
+## Próximos pasos:
+
+1. Implementar una función de tokenización que utilice estos patrones para convertir el código fuente en una serie de tokens.
+2. Manejar casos especiales como la indentación y los comentarios.
+3. Implementar el manejo de errores para caracteres o patrones no reconocidos.
