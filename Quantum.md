@@ -172,6 +172,76 @@ El estado original se "teleporta" al tercer qubit (en un experimento real, se ne
 | DOSPUNTOS      | ":"                    | :                      | |
 
 
+
+
+## Funcion de Tokenizacion
+
+import re
+
+# Definir los patrones de los tokens usando expresiones regulares
+token_specification = [
+    ('QUBIT', r'\bqubit\b'),           # Qubit keyword
+    ('MEDIR', r'\bmedir\b'),           # Medir keyword
+    ('SI', r'\bsi\b'),                 # Condicional 'si'
+    ('ENTONCES', r'\bentonces\b'),     # 'entonces' keyword
+    ('MIENTRAS', r'\bmientras\b'),     # Loop 'mientras'
+    ('PRINT', r'\bprint\b'),           # Print keyword
+    ('ESTADO_QUBIT', r'\|[01]\>'),     # Estado de qubit (|0>, |1>)
+    ('VARIABLE', r'[a-zA-Z_][a-zA-Z0-9_]*'), # Nombres de variables
+    ('NUMERO', r'[0-9]+'),             # Números enteros
+    ('IGUAL', r'='),                   # Signo de igualdad
+    ('SUMA', r'\+'),                   # Operador de suma
+    ('RESTA', r'-'),                   # Operador de resta
+    ('MULTIPLICACION', r'\*'),         # Operador de multiplicación
+    ('DIVISION', r'/'),                # Operador de división
+    ('LPAREN', r'\('),                 # Paréntesis izquierdo
+    ('RPAREN', r'\)'),                 # Paréntesis derecho
+    ('LBRACKET', r'\['),               # Corchete izquierdo
+    ('RBRACKET', r'\]'),               # Corchete derecho
+    ('COMA', r','),                    # Coma
+    ('DOSPUNTOS', r':'),               # Dos puntos
+    ('SKIP', r'[ \t]+'),               # Ignorar espacios y tabulaciones
+    ('NEWLINE', r'\n'),                # Nueva línea
+    ('MISMATCH', r'.'),                # Cualquier otro carácter
+]
+
+# Compilar la especificación de tokens
+token_regex = '|'.join(f'(?P<{pair[0]}>{pair[1]})' for pair in token_specification)
+
+# Función de tokenización
+def tokenize(code):
+    tokens = []
+    for mo in re.finditer(token_regex, code):
+        kind = mo.lastgroup
+        value = mo.group()
+        if kind == 'NUMERO':
+            value = int(value)  # Convertir números a enteros
+        elif kind == 'NEWLINE':
+            continue  # Ignorar saltos de línea
+        elif kind == 'SKIP':
+            continue  # Ignorar espacios y tabulaciones
+        elif kind == 'MISMATCH':
+            raise RuntimeError(f'Error de síntaxis: {value}')
+        tokens.append((kind, value))
+    return tokens
+
+# Ejemplo de código en Quantum
+code = '''
+qubit q1 = |0>
+qubit q2 = |1>
+H(q1)
+CNOT(q1, q2)
+result = medir(q1)
+if (result == 1) {
+    X(q2)
+}
+'''
+
+# Tokenizar el código
+tokens = tokenize(code)
+for token in tokens:
+    print(token)
+
 ## Próximos pasos:
 
 1. Implementar una función de tokenización que utilice estos patrones para convertir el código fuente en una serie de tokens.
