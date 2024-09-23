@@ -178,8 +178,10 @@ El estado original se "teleporta" al tercer qubit (en un experimento real, se ne
 
 
 
-Definir los patrones de los tokens usando expresiones regulares
+
 ```import re
+
+#Definir los patrones de los tokens usando expresiones regulares
 token_specification = [
     ('QUBIT', r'\bqubit\b'),           # Qubit keyword
     ('MEDIR', r'\bmedir\b'),           # Medir keyword
@@ -206,10 +208,10 @@ token_specification = [
     ('MISMATCH', r'.'),                # Cualquier otro carácter
 ]
 
-Compilar la especificación de tokens
+#Compilar la especificación de tokens
 token_regex = '|'.join(f'(?P<{pair[0]}>{pair[1]})' for pair in token_specification)
 
-Función de tokenización
+#Función de tokenización
 def tokenize(code):
     tokens = []
     for mo in re.finditer(token_regex, code):
@@ -226,7 +228,7 @@ def tokenize(code):
         tokens.append((kind, value))
     return tokens
 
-Ejemplo de código en Quantum
+#Ejemplo de código en Quantum
 code = '''
 qubit q1 = |0>
 qubit q2 = |1>
@@ -238,7 +240,7 @@ if (result == 1) {
 }
 '''
 
-Tokenizar el código
+#Tokenizar el código
 tokens = tokenize(code)
 for token in tokens:
     print(token)
@@ -247,9 +249,7 @@ for token in tokens:
 Cuando se ejecuta el codigo, debería producir una lista de tokens que representan cada elemento del código, palabras clave, variables, y operadores.
 
 Si se ejecuta la salida seria algo similar a esto:
-
-plaintext
-Copiar código
+```
 ('QUBIT', 'qubit')
 ('VARIABLE', 'q1')
 ('IGUAL', '=')
@@ -286,6 +286,7 @@ Copiar código
 ('VARIABLE', 'q2')
 ('RPAREN', ')')
 ('RBRACKET', '}')
+```
 
 ## Próximos pasos:
 
