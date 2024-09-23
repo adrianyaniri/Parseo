@@ -242,6 +242,50 @@ tokens = tokenize(code)
 for token in tokens:
     print(token)
 
+
+Cuando se ejecuta el codigo, debería producir una lista de tokens que representan cada elemento del código, palabras clave, variables, y operadores.
+
+Si se ejecuta la salida seria algo similar a esto:
+
+plaintext
+Copiar código
+('QUBIT', 'qubit')
+('VARIABLE', 'q1')
+('IGUAL', '=')
+('ESTADO_QUBIT', '|0>')
+('QUBIT', 'qubit')
+('VARIABLE', 'q2')
+('IGUAL', '=')
+('ESTADO_QUBIT', '|1>')
+('VARIABLE', 'H')
+('LPAREN', '(')
+('VARIABLE', 'q1')
+('RPAREN', ')')
+('VARIABLE', 'CNOT')
+('LPAREN', '(')
+('VARIABLE', 'q1')
+('COMA', ',')
+('VARIABLE', 'q2')
+('RPAREN', ')')
+('VARIABLE', 'result')
+('IGUAL', '=')
+('MEDIR', 'medir')
+('LPAREN', '(')
+('VARIABLE', 'q1')
+('RPAREN', ')')
+('SI', 'if')
+('LPAREN', '(')
+('VARIABLE', 'result')
+('IGUAL', '=')
+('NUMERO', 1)
+('RPAREN', ')')
+('LBRACKET', '{')
+('VARIABLE', 'X')
+('LPAREN', '(')
+('VARIABLE', 'q2')
+('RPAREN', ')')
+('RBRACKET', '}')
+
 ## Próximos pasos:
 
 1. Implementar una función de tokenización que utilice estos patrones para convertir el código fuente en una serie de tokens.
