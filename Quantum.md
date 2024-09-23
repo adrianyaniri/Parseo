@@ -154,7 +154,7 @@ El estado original se "teleporta" al tercer qubit (en un experimento real, se ne
 | MEDIR          | "medir"                | medir                  |
 | SI             | "si"                   | si                     |
 | ENTONCES       | "entonces"             | entonces               |
-| MIESTRAS       | "mientras"             | mientras               | |
+| MIENTRAS       | "mientras"             | mientras               | |
 | PRINT          | "print"                | bprint                 |
 | ESTADO_QUBIT   | "estado_qubit"         |                        |1>"                | \|[01]>                     |                |X|CNOT)\b              |
 | VARIABLE       | (nombres de variables) | [a-zA-Z_][a-zA-Z0-9_]* |
