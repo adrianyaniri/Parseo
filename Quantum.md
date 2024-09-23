@@ -163,7 +163,7 @@ El estado original se "teleporta" al tercer qubit (en un experimento real, se ne
 | SUMA           | "+"                    | \+                     |
 | RESTA          | "-"                    | -                      |
 | MULTIPLICACION | "*"                    | \*                     |
-| DIVICION       | "/"                    | /                      |
+| DIVISION       | "/"                    | /                      |
 | LPAREN         | "("                    | \(                     |
 | RPAREN         | ")"                    | \)                     |
 | LBRACKET       | "["                    | \[                     |
