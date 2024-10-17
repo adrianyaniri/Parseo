@@ -1,11 +1,11 @@
 # Quantum
 
-Quantum es un lenguaje de programación simplificado diseñado 
+Quantum es un lenguaje de programación simplificado diseñado
 para introducir conceptos de computación cuántica.
 ____________
 ____________
 
-### Características Principales
+## Características Principales
 
 + **Sintaxis simple y clara**: Quantum está diseñado para ser fácil de leer y escribir, con una sintaxis clara y concisa.
 + ***Operaciones*** cuánticas básicas.
@@ -13,7 +13,7 @@ ____________
 + ***Estructuras*** de control clásicas (condicionales e iteradores)
 + ***Lenguaje*** base Python.
 
-### Componentes Básicos
+## Componentes Básicos
 
 1 - **Qubit**: Un qubit es la unidad básica de información cuántica.
 
@@ -51,20 +51,22 @@ for i in range(3) {
 }
 ```
 
-### Ejemplo de Programa
+## Ejemplo de Programa
 
-#### Algoritmo de Deutsch
+### Algoritmo de Deutsch
+
 ***Propósito***:
-+ El algoritmo de Deutsch resuelve un problema específico: 
-determinar si una función booleana de un bit es constante o balanceada, 
-y lo hace con una sola evaluación de la función. 
+
++ El algoritmo de Deutsch resuelve un problema específico:
+determinar si una función booleana de un bit es constante o balanceada,
+y lo hace con una sola evaluación de la función.
 + Definiciones:
 
-- Una función booleana f(x) que toma un bit de entrada y produce un bit de salida.
-- Constante: f(0) = f(1) (ambos 0 o ambos 1)
-- Balanceada: f(0) ≠ f(1) (uno es 0 y el otro es 1)
++ Una función booleana f(x) que toma un bit de entrada y produce un bit de salida.
++ Constante: f(0) = f(1) (ambos 0 o ambos 1)
++ Balanceada: f(0) ≠ f(1) (uno es 0 y el otro es 1)
 
-#### Problema clásico vs. cuántico:
+#### Problema clásico vs. cuántico
 
 + Clásicamente: necesitarías evaluar f(0) y f(1) y compararlos, lo que requiere dos evaluaciones.
 + Cuánticamente: el algoritmo de Deutsch puede determinar si f es constante o balanceada con una sola evaluación.
@@ -89,7 +91,6 @@ style M2 fill:#cfc,stroke:#333,stroke-width:2px
 
 ```
 
-    
 ```python
 # Inicialización de qubits
 qubit q1 = |0>
@@ -117,26 +118,26 @@ if (result == 0) {
 }
 ```
 
-# Algoritmos Cuánticos Sencillos
+## Algoritmos Cuánticos Sencillos
 
 ***Generador de Bits Aleatorios Cuántico***
-   
-_Explicación_:
+
+*Explicación*:
 Este algoritmo aprovecha la naturaleza probabilística de la mecánica cuántica para generar bits aleatorios verdaderos. Se basa en el principio de superposición y el colapso de la función de onda durante la medición.
 
-### Cómo funciona:
+### Cómo funciona
 
-* Inicializamos un qubit en el estado |0>.
++ Inicializamos un qubit en el estado |0>.
 Aplicamos una puerta Hadamard (H) para poner el qubit en superposición.
 Medimos el qubit, obteniendo 0 o 1 con igual probabilidad.
 Repetimos el proceso para generar múltiples bits aleatorios.
 
 ***Teleportación Cuántica Simplificada***
-   
-_Explicación:_
+
+*Explicación:*
 La teleportación cuántica permite "transferir" el estado de un qubit a otro qubit distante utilizando entrelazamiento y comunicación clásica. Esta versión simplificada muestra los principios básicos sin la comunicación clásica.
-   
-### Cómo funciona:
+
+### Cómo funciona
 
 Preparamos un estado a teleportar en un qubit.
 Creamos un par de qubits entrelazados (estado Bell).
@@ -144,7 +145,7 @@ Realizamos una operación de entrelazamiento entre el qubit a teleportar y uno d
 Medimos los dos primeros qubits.
 El estado original se "teleporta" al tercer qubit (en un experimento real, se necesitaría comunicación clásica y operaciones adicionales).
 
-# Especificación Léxica del Lenguaje Quantum
+## Especificación Léxica del Lenguaje Quantum
 
 ## Tabla de Tokens, Lexemas y Patrones
 
@@ -154,9 +155,9 @@ El estado original se "teleporta" al tercer qubit (en un experimento real, se ne
 | MEDIR          | "medir"                | medir                  |
 | SI             | "si"                   | si                     |
 | ENTONCES       | "entonces"             | entonces               |
-| MIENTRAS       | "mientras"             | mientras               | |
+| MIENTRAS       | "mientras"             | mientras               |
 | PRINT          | "print"                | bprint                 |
-| ESTADO_QUBIT   | "estado_qubit"         |                        |1>"                | \|[01]>                     |                |X|CNOT)\b              |
+| ESTADO_QUBIT   | "estado_qubit"         | |1>"                | \|[01]>                     |                |X|CNOT)\b          |
 | VARIABLE       | (nombres de variables) | [a-zA-Z_][a-zA-Z0-9_]* |
 | NUMERO         | (números enteros)      | [0-9]*                 |
 | IGUAL          | "="                    | =                      |
@@ -171,13 +172,7 @@ El estado original se "teleporta" al tercer qubit (en un experimento real, se ne
 | COMA           | ","                    | ,                      |
 | DOSPUNTOS      | ":"                    | :                      | |
 
-
-
-
 ## Funcion de Tokenizacion
-
-
-
 
 ```import re
 
@@ -249,6 +244,7 @@ for token in tokens:
 Cuando se ejecuta el codigo, debería producir una lista de tokens que representan cada elemento del código, palabras clave, variables, y operadores.
 
 Si se ejecuta la salida seria algo similar a esto:
+
 ```
 ('QUBIT', 'qubit')
 ('VARIABLE', 'q1')
@@ -288,7 +284,7 @@ Si se ejecuta la salida seria algo similar a esto:
 ('RBRACKET', '}')
 ```
 
-## Próximos pasos:
+## Próximos pasos
 
 1. Implementar una función de tokenización que utilice estos patrones para convertir el código fuente en una serie de tokens.
 2. Manejar casos especiales como la indentación y los comentarios.

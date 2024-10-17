@@ -1,0 +1,34 @@
+<programa> ::= <sentencia>*
+
+<sentencia> ::= <declaracion> | <asignacion> | <control_flujo>
+              | <operacion_qubit> | <funcion> | <entrada_salida>
+
+<declaracion> ::= "qubit" <identificador>
+               | "entero" <identificador>
+               | "booleano" <identificador>
+
+<asignacion> ::= <identificador> "=" <expresion>
+
+<expresion> ::= <termino> ( ("+" | "-" | "*" | "/") <termino> )*
+<termino> ::= <identificador> | <numero> | <estado_qubit> | <valor_booleano>
+
+<control_flujo> ::= <if_statement> | <while_statement>
+
+<if_statement> ::= "si" "(" <expresion> ")" "{" <sentencia>* "}"
+                ( "sino" "{" <sentencia>* "}" )?
+
+<while_statement> ::= "mientras" "(" <expresion> ")" "{" <sentencia>* "}"
+
+<funcion> ::= "def" <identificador> "(" <parametros>? ")" "{" <sentencia>* "}"
+
+<operacion_qubit> ::= "H" <identificador>
+                    | "X" <identificador>
+                    | "CNOT" <identificador> "," <identificador>
+
+<entrada_salida> ::= "imprimir" <expresion>
+                   | "medir" <identificador>
+
+<parametros> ::= <identificador> ( "," <identificador> )*
+
+<estado_qubit> ::= "|" ( "0" | "1" ) ">"
+<valor_booleano> ::= "verdadero" | "falso"
